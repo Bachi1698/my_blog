@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce import HTMLField
 
 # Create your models here.
 class Categorie(models.Model):
@@ -45,7 +46,8 @@ class Article(models.Model):
     # TODO: Define fields here
     titre = models.CharField( max_length=250)
     image = models.ImageField(upload_to='image/article')
-    video = models.URLField(max_length=255)
+    video = models.URLField(max_length=255, null=True, blank=True )
+    content = HTMLField('Content')
     description = models.TextField()
     tague = models.ManyToManyField(Tague)
     categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE,related_name='article_categorie')

@@ -1,9 +1,11 @@
 from django.db import models
+from tinymce import HTMLField
+
 
 # Create your models here.
 
 class About(models.Model):
-    presentation = models.TextField()
+    presentation = HTMLField('Content')
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
