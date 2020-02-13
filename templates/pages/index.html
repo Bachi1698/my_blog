@@ -29,7 +29,7 @@
                                             {% else %}
                                             <a href="#" class="post-cata">{{i.categorie}}</a>
                                             {% endif %}
-                                        <a href="{% url 'single' %}" class="post-title">{{i.titre}}</a>
+                                        <a href="{% url 'single' i.id %}" class="post-title">{{i.titre}}</a>
                                         <div class="post-meta d-flex">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> {{i.Commentaire_count}}</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{i.vue}}</a>
@@ -59,7 +59,7 @@
                                         {% else %}
                                         <a href="#" class="post-cata">{{i.categorie}}</a>
                                         {% endif %}
-                                    <a href="{% url 'single' %}" class="post-title">{{i.titre}}</a>
+                                    <a href="{% url 'single' i.id %}" class="post-title">{{i.titre}}</a>
                                     <div class="post-meta d-flex">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> {{i.Commentaire_count}}</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{i.Commentaire_count}}</a>
@@ -174,7 +174,7 @@
                                 {% else %}
                                 <a href="#" class="post-cata">{{i.categorie}}</a>
                                 {% endif %}
-                            <a href="{% url 'single' %}" class="post-title">{{i.titre}}</a>
+                            <a href="{% url 'single' i.id %}" class="post-title">{{i.titre}}</a>
                             <div class="post-meta d-flex">
                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> {{i.Commentaire_count}}</a>
                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{i.vue}}</a>
@@ -210,33 +210,33 @@
                         <div class="featured-post-slides owl-carousel mb-30">
                             <!-- Single Feature Post -->
                             
-                            {% for a in article_v %}
+                            {% for i in article_v %}
 
                             
                             {% if forloop.counter < 3 %}
                                 
                             
-                            <div class="single-feature-post video-post bg-img" style="background-image: url({{a.image.url}});">
+                            <div class="single-feature-post video-post bg-img" style="background-image: url({{i.image.url}});">
                                 <!-- Play Button -->
                                 <a href="{% url 'video' %}" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
                                 
                                 <!-- Post Content -->
                                 <div class="post-content">
                                     
-                                    {% if a.categorie.nom == "sport" %}
-                                        <a href="#" class="post-cata cata-success">{{a.categorie}}</a>
-                                    {% elif a.categorie.nom == "business" %}
-                                        <a href="#" class="post-cata cata-primary">{{a.categorie}}</a>
-                                    {% elif a.categorie.nom == "game" %}
-                                        <a href="#" class="post-cata">{{a.categorie}}</a>
+                                    {% if i.categorie.nom == "sport" %}
+                                        <a href="#" class="post-cata cata-success">{{i.categorie}}</a>
+                                    {% elif i.categorie.nom == "business" %}
+                                        <a href="#" class="post-cata cata-primary">{{i.categorie}}</a>
+                                    {% elif i.categorie.nom == "game" %}
+                                        <a href="#" class="post-cata">{{i.categorie}}</a>
                                     {% else %}
-                                         <a href="#" class="post-cata">{{a.categorie}}</a>
+                                         <a href="#" class="post-cata">{{i.categorie}}</a>
                                     {% endif %}
-                                    <a href="{% url 'single' %}" class="post-title">{{a.titre}}</a>
+                                    <a href="{% url 'single' i.id %}" class="post-title">{{i.titre}}</a>
                                    
                                     <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>{{a.Commentaire_count}}</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{a.vue}}</a>
+                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>{{i.Commentaire_count}}</a>
+                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{i.vue}}</a>
                                         <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
                                     </div>
                                 </div>
@@ -267,7 +267,7 @@
                                     <!-- Post Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-cata cata-sm cata-danger">Game</a>
-                                        <a href="{% url 'single' %}" class="post-title">Searching for the 'angel' who held me on Westminste Bridge</a>
+                                        <a href="#" class="post-title">Searching for the 'angel' who held me on Westminste Bridge</a>
                                         <div class="post-meta d-flex">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
@@ -291,7 +291,7 @@
                                     <!-- Post Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-cata cata-sm cata-primary">Business</a>
-                                        <a href="{% url 'single' %}" class="post-title">Love Island star's boyfriend found dead after her funeral</a>
+                                        <a href="#" class="post-title">Love Island star's boyfriend found dead after her funeral</a>
                                         <div class="post-meta d-flex">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
@@ -325,7 +325,7 @@
                                         <!-- Post Content -->
                                         <div class="post-content">
                                             <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                            <a href="{% url 'single' %}" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
+                                            <a href="#" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
                                             <div class="post-meta d-flex">
                                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
@@ -347,7 +347,7 @@
                                         <!-- Post Content -->
                                         <div class="post-content">
                                             <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                            <a href="{% url 'single' %}" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
+                                            <a href="#" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
                                             <div class="post-meta d-flex">
                                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
@@ -380,7 +380,7 @@
                                         <!-- Post Content -->
                                         <div class="post-content">
                                             <a href="#" class="post-cata cata-sm cata-primary">Business</a>
-                                            <a href="{% url 'single' %}" class="post-title">Full article Prince Charles's 'urgent' global research</a>
+                                            <a href="#" class="post-title">Full article Prince Charles's 'urgent' global research</a>
                                             <div class="post-meta d-flex">
                                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
@@ -402,7 +402,7 @@
                                         <!-- Post Content -->
                                         <div class="post-content">
                                             <a href="#" class="post-cata cata-sm cata-primary">Business</a>
-                                            <a href="{% url 'single' %}" class="post-title">Full article Prince Charles's 'urgent' global research</a>
+                                            <a href="#" class="post-title">Full article Prince Charles's 'urgent' global research</a>
                                             <div class="post-meta d-flex">
                                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
@@ -422,7 +422,7 @@
                                         <img src="/static/img/bg-img/16.jpg" alt="">
                                     </div>
                                     <div class="post-content">
-                                        <a href="{% url 'single' %}" class="post-title">Epileptic boy's cannabis let through border</a>
+                                        <a href="#" class="post-title">Epileptic boy's cannabis let through border</a>
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
@@ -439,7 +439,7 @@
                                         <img src="/static/img/bg-img/18.jpg" alt="">
                                     </div>
                                     <div class="post-content">
-                                        <a href="{% url 'single' %}" class="post-title">Paramedics 'drilled into boat death woman'</a>
+                                        <a href="#" class="post-title">Paramedics 'drilled into boat death woman'</a>
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
@@ -456,7 +456,7 @@
                                         <img src="/static/img/bg-img/19.jpg" alt="">
                                     </div>
                                     <div class="post-content">
-                                        <a href="{% url 'single' %}" class="post-title">Tory vice-chairs quit over PM's Brexit plan</a>
+                                        <a href="#" class="post-title">Tory vice-chairs quit over PM's Brexit plan</a>
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
@@ -473,7 +473,7 @@
                                         <img src="/static/img/bg-img/20.jpg" alt="">
                                     </div>
                                     <div class="post-content">
-                                        <a href="{% url 'single' %}" class="post-title">Do This One Simple Action for an Absolutely</a>
+                                        <a href="#" class="post-title">Do This One Simple Action for an Absolutely</a>
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
@@ -500,7 +500,7 @@
                                 <!-- Post Content -->
                                 <div class="post-content">
                                     <a href="#" class="post-cata">Sports</a>
-                                    <a href="{% url 'single' %}" class="post-title">Reunification of migrant toddlers, parents should be completed Thursday</a>
+                                    <a href="#" class="post-title">Reunification of migrant toddlers, parents should be completed Thursday</a>
                                     <div class="post-meta d-flex">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
@@ -520,7 +520,7 @@
                                 <!-- Post Content -->
                                 <div class="post-content">
                                     <a href="#" class="post-cata">Sports</a>
-                                    <a href="{% url 'single' %}" class="post-title">Reunification of migrant toddlers, parents should be completed Thursday</a>
+                                    <a href="#" class="post-title">Reunification of migrant toddlers, parents should be completed Thursday</a>
                                     <div class="post-meta d-flex">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
@@ -560,7 +560,7 @@
                                             {% else %}
                                             <a href="#" class="post-cata">{{i.categorie}}</a>
                                             {% endif %}
-                                        <a href="{% url 'single' %}" class="post-title mb-2">{{i.titre}}</a>
+                                        <a href="{% url 'single' i.id %}" class="post-title mb-2">{{i.titre}}</a>
                                         <div class="post-meta d-flex align-items-center mb-2">
                                             <a href="#" class="post-author">{{i.auteur}}</a>
                                             <i class="fa fa-circle" aria-hidden="true"></i>
@@ -614,7 +614,7 @@
                                 <!-- Post Content -->
                                 <div class="post-content">
                                     <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="{% url 'single' %}" class="post-title">Full article Prince Charles's 'urgent' global research</a>
+                                    <a href="#" class="post-title">Full article Prince Charles's 'urgent' global research</a>
                                     <div class="post-meta d-flex">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
@@ -629,7 +629,7 @@
                                     <img src="/static/img/bg-img/1.jpg" alt="">
                                 </div>
                                 <div class="post-content">
-                                    <a href="{% url 'single' %}" class="post-title">DC Shoes: gymkhana five; the making of</a>
+                                    <a href="#" class="post-title">DC Shoes: gymkhana five; the making of</a>
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 29</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 08</a>
@@ -644,7 +644,7 @@
                                     <img src="/static/img/bg-img/2.jpg" alt="">
                                 </div>
                                 <div class="post-content">
-                                    <a href="{% url 'single' %}" class="post-title">Sweet Yummy Chocolatea Tea</a>
+                                    <a href="#" class="post-title">Sweet Yummy Chocolatea Tea</a>
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 17</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 33</a>
@@ -659,7 +659,7 @@
                                     <img src="/static/img/bg-img/35.jpg" alt="">
                                 </div>
                                 <div class="post-content">
-                                    <a href="{% url 'single' %}" class="post-title">How To Make Orange Chicken Recipe?</a>
+                                    <a href="#" class="post-title">How To Make Orange Chicken Recipe?</a>
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 11</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
@@ -688,7 +688,7 @@
                                     <img src="/static/img/bg-img/25.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
-                                    <a href="{% url 'single' %}" class="channel-title">Music Channel</a>
+                                    <a href="#" class="channel-title">Music Channel</a>
                                     <a href="#" class="btn subscribe-btn"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Subscribe</a>
                                 </div>
                             </div>
@@ -699,7 +699,7 @@
                                     <img src="/static/img/bg-img/26.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
-                                    <a href="{% url 'single' %}" class="channel-title">Trending Channel</a>
+                                    <a href="#" class="channel-title">Trending Channel</a>
                                     <a href="#" class="btn subscribe-btn"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Subscribe</a>
                                 </div>
                             </div>
@@ -710,7 +710,7 @@
                                     <img src="/static/img/bg-img/27.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
-                                    <a href="{% url 'single' %}" class="channel-title">Travel Channel</a>
+                                    <a href="#" class="channel-title">Travel Channel</a>
                                     <a href="#" class="btn subscribe-btn"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Subscribe</a>
                                 </div>
                             </div>
@@ -721,7 +721,7 @@
                                     <img src="/static/img/bg-img/28.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
-                                    <a href="{% url 'single' %}" class="channel-title">Sport Channel</a>
+                                    <a href="#" class="channel-title">Sport Channel</a>
                                     <a href="#" class="btn subscribe-btn"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Subscribe</a>
                                 </div>
                             </div>
@@ -732,7 +732,7 @@
                                     <img src="/static/img/bg-img/29.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
-                                    <a href="{% url 'single' %}" class="channel-title">TV Show Channel</a>
+                                    <a href="#" class="channel-title">TV Show Channel</a>
                                     <a href="#" class="btn subscribe-btn"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Subscribe</a>
                                 </div>
                             </div>
@@ -771,7 +771,7 @@
                                         <img src="{{i.image.url}}" alt="">
                                     </div>
                                     <div class="post-content">
-                                        <a href="{% url 'single' %}" class="post-title">{{i.titre}}</a>
+                                        <a href="{% url 'single' i.id %}" class="post-title">{{i.titre}}</a>
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>{{i.Commentaire_count}}</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{i.vue}}</a>

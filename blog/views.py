@@ -4,10 +4,10 @@ from .import models  # importation de fichier models.py (fichier contenant tous 
 
 def home(request): 
     article = models.Article.objects.filter(status=True) # récupération des articles qui ont pour status true
-    article_recent = models.Article.objects.order_by('-date_add')[:3] # récupération des trois articles les plus récente
+    article_recent = models.Article.objects.all().order_by('-date_add')[:3] # récupération des trois articles les plus récente
     article_vue = models.Article.objects.order_by('-vue')[:3] # récupération des trois articles les plus vue
     categorie = models.Categorie.objects.filter(status=True) # récuperation des categorie avec status True
-    article_v = models.Article.objects.exclude(video=None) # récupération des articles ayant des vidéo
+    article_v = models.Article.objects.exclude() # récupération des articles ayant des vidéo
     print(request.user)
     datas = {
         'article_recent': article_recent,
@@ -24,9 +24,10 @@ def video(request):
     }
     return render(request, "pages/video-post.html",datas)
 
-def single(request):
+def single(request, pk):
+    article = models.Article.objects.get(pk=pk)
     datas = {
-        
+       'article':article,
     }
     return render(request, "pages/single-post.html",datas)
 
