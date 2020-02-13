@@ -68,6 +68,12 @@ class Article(models.Model):
         """Unicode representation of Article."""
         return self.titre
     
+    @property
+    def Commentaire_count(self):
+        commentaitre = Commentaire.objects.filter(article__titre=self.titre).count()
+        return commentaitre
+    
+    
 class Commentaire(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='user_commentaire')
     article = models.ForeignKey(Article, on_delete=models.CASCADE,related_name='article_commentaire')
