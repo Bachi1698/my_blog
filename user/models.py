@@ -7,7 +7,7 @@ from django.dispatch import receiver
 class Profil(models.Model):
     adresse = models.CharField(max_length=255, null=True, blank=True)
     contact = models.CharField(max_length=255, null=True, blank=True)
-    avatar = models.ImageField(upload_to="images/user", null=True, blank=True)
+    avatar = models.ImageField(upload_to="images/user", default="image/article/pexels-photo-1082958.jpeg")
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='User_profil')
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)

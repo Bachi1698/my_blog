@@ -331,14 +331,13 @@
                                 
                                 {% for i in article %}
                                     
-                                {% endfor %}
-                                    
-                                <div class="sport-video-slides owl-carousel mb-50">
+                                    {% if i.categorie.nom == "game" %}
+                                        <div class="sport-video-slides owl-carousel mb-50">
                                     <!-- Single Blog Post -->
                                     <div class="single-post-area">
                                         <!-- Post Thumbnail -->
                                         <div class="post-thumbnail">
-                                            <img src="/static/img/bg-img/15.jpg" alt="">
+                                            <img src="{{i.image.url}}" alt="">
 
                                             <!-- Video Duration -->
                                             <span class="video-duration">05.03</span>
@@ -346,21 +345,20 @@
 
                                         <!-- Post Content -->
                                         <div class="post-content">
-                                            <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                            <a href="#" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
+                                            <a href="#" class="post-cata cata-sm cata-success">{{i.categorie}}</a>
+                                            <a href="#" class="post-title">{{i.titre}}</a>
                                             <div class="post-meta d-flex">
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
+                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> {{i.Commentaire_count}}</a>
+                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{i.vue}}</a>
                                                 <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
                                             </div>
                                         </div>
                                     </div>
-
                                     <!-- Single Blog Post -->
                                     <div class="single-post-area">
                                         <!-- Post Thumbnail -->
                                         <div class="post-thumbnail">
-                                            <img src="/static/img/bg-img/13.jpg" alt="">
+                                            <img src="{{i.image.url}}" alt="">
 
                                             <!-- Video Duration -->
                                             <span class="video-duration">05.03</span>
@@ -368,16 +366,19 @@
 
                                         <!-- Post Content -->
                                         <div class="post-content">
-                                            <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                            <a href="#" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
+                                            <a href="#" class="post-cata cata-sm cata-success">{{i.categorie}}</a>
+                                            <a href="#" class="post-title">{{i.titre}}</a>
                                             <div class="post-meta d-flex">
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
+                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> {{i.Commentaire_count}}</a>
+                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{i.vue}}</a>
                                                 <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                    {% endif %}
+                                        
+                                {% endfor %}
                          </div>
 
                             <div class="col-12 col-lg-6">
@@ -386,14 +387,17 @@
                                     <h4>Business Videos</h4>
                                     <div class="line"></div>
                                 </div>
-
-                                <!-- Business Video Slides -->
+                                
+                                {% for i in article %}
+                                 
+                                 {% if i.categorie.nom == "business" %}
+                                      <!-- Business Video Slides -->
                                 <div class="business-video-slides owl-carousel mb-50">
                                     <!-- Single Blog Post -->
                                     <div class="single-post-area">
                                         <!-- Post Thumbnail -->
                                         <div class="post-thumbnail">
-                                            <img src="/static/img/bg-img/17.jpg" alt="">
+                                            <img src="{{i.image.url}}" alt="">
 
                                             <!-- Video Duration -->
                                             <span class="video-duration">05.03</span>
@@ -401,11 +405,11 @@
 
                                         <!-- Post Content -->
                                         <div class="post-content">
-                                            <a href="#" class="post-cata cata-sm cata-primary">Business</a>
-                                            <a href="#" class="post-title">Full article Prince Charles's 'urgent' global research</a>
+                                            <a href="#" class="post-cata cata-sm cata-primary">{{i.categorie}}</a>
+                                            <a href="#" class="post-title">{{i.titre}}</a>
                                             <div class="post-meta d-flex">
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
+                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> {{i.Commentaire_count}}</a>
+                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{i.vue}}</a>
                                                 <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
                                             </div>
                                         </div>
@@ -415,7 +419,7 @@
                                     <div class="single-post-area">
                                         <!-- Post Thumbnail -->
                                         <div class="post-thumbnail">
-                                            <img src="/static/img/bg-img/13.jpg" alt="">
+                                            <img src="{{i.image.url}}" alt="">
 
                                             <!-- Video Duration -->
                                             <span class="video-duration">05.03</span>
@@ -423,87 +427,44 @@
 
                                         <!-- Post Content -->
                                         <div class="post-content">
-                                            <a href="#" class="post-cata cata-sm cata-primary">Business</a>
-                                            <a href="#" class="post-title">Full article Prince Charles's 'urgent' global research</a>
+                                            <a href="#" class="post-cata cata-sm cata-primary">{{i.categorie}}</a>
+                                            <a href="#" class="post-title">{{i.titre}}</a>
                                             <div class="post-meta d-flex">
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
+                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>{{i.Commentaire_count}}</a>
+                                                <a href="#"><i class="fa fa-    eye" aria-hidden="true"></i> {{i.vue}}</a>
                                                 <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                 {% endif %}
+                                     
+                                
+                                {% endfor %}
+                                    
+                               
                             </div>
                         </div>
 
                         <div class="row mb-30">
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-lg-6">
+                            
+                            {% for i in article %}
+                              <div class="col-12 col-lg-6">
                                 <div class="single-blog-post style-3 d-flex mb-50">
                                     <div class="post-thumbnail">
-                                        <img src="/static/img/bg-img/16.jpg" alt="">
+                                        <img src="{{i.image.url}}" alt="">
                                     </div>
                                     <div class="post-content">
-                                        <a href="#" class="post-title">Epileptic boy's cannabis let through border</a>
+                                        <a href="#" class="post-title">{{i.titre}}</a>
                                         <div class="post-meta d-flex justify-content-between">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> {{i.Commentaire_count}}</a>
+                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{i.vue}}</a>
                                             <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-lg-6">
-                                <div class="single-blog-post style-3 d-flex mb-50">
-                                    <div class="post-thumbnail">
-                                        <img src="/static/img/bg-img/18.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="#" class="post-title">Paramedics 'drilled into boat death woman'</a>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-lg-6">
-                                <div class="single-blog-post style-3 d-flex mb-50">
-                                    <div class="post-thumbnail">
-                                        <img src="/static/img/bg-img/19.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="#" class="post-title">Tory vice-chairs quit over PM's Brexit plan</a>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-lg-6">
-                                <div class="single-blog-post style-3 d-flex mb-50">
-                                    <div class="post-thumbnail">
-                                        <img src="/static/img/bg-img/20.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="#" class="post-title">Do This One Simple Action for an Absolutely</a>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>  
+                            {% endfor %}
                         </div>
 
                         <!-- Section Heading -->

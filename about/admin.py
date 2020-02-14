@@ -18,3 +18,13 @@ class AboutAdmin(admin.ModelAdmin):
     list_display_links = ['presentation',]
     ordering = ['presentation',]
     list_per_page = 10
+
+@admin.register(models.SiteInfo)
+class SiteInfoAdmin(admin.ModelAdmin):
+    list_display = ('logo','slogan','description','contact','status','date_add', 'date_update')
+    list_filter = ('status',)
+    search_fields = ('slogan',)
+    date_hierarchy = 'date_add'
+    list_display_links = ['slogan',]
+    ordering = ['slogan',]
+    list_per_page = 10

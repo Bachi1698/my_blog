@@ -5,7 +5,7 @@ from . import models
 
 @admin.register(models.Profil)
 class ProfilAdmin(admin.ModelAdmin):
-    list_display = ('adresse','contact','user','status','date_add', 'date_update')
+    list_display = ('adresse','contact','user','status','date_add', 'date_update','avatar')
     list_filter = ('status',)
     search_fields = ('user',)
     date_hierarchy = 'date_add'
