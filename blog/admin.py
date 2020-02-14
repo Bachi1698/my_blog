@@ -72,7 +72,7 @@ class ReponseCommentaireAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_add'
     list_display_links = ['user',]
     ordering = ['date_add',] 
-    def view_image(self, obj):
+    def view_image(self, obj): 
         return mark_safe('<img src="{url}" width="120px" height="150px" />'.format(url = obj.image.url ))
 
 

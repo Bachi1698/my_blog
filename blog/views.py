@@ -8,6 +8,7 @@ def home(request):
     article_vue = models.Article.objects.order_by('-vue')[:3] # récupération des trois articles les plus vue
     categorie = models.Categorie.objects.filter(status=True) # récuperation des categorie avec status True
     article_v = models.Article.objects.exclude() # récupération des articles ayant des vidéo
+    article_r = models.Article.objects.order_by('-date_add')[:1]
     print(request.user)
     datas = {
         'article_recent': article_recent,
@@ -15,6 +16,8 @@ def home(request):
         'article': article,
         'article_v': article_v,
         'categorie': categorie,
+        'article_r': article_r,
+       
     }
     return render(request, "pages/index.html", datas)
 
