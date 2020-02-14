@@ -1,4 +1,5 @@
 {% extends 'bases/bases.html' %}
+{% load widget_tweaks%}
 
 {% block content %}
     
@@ -34,19 +35,23 @@
                             <div class="line"></div>
                         </div>
 
-                        <form action="index.html" method="post">
-                            <div class="form-group">
-                                <input type="name" class="form-control" id="exampleInputName" placeholder="Name">
-                            </div>
-                            <div class="form-group">
-                                <input type="surname" class="form-control" id="exampleInputSurname" placeholder="Surname">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email or User Name">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                            </div>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            
+                            {% for field in form.visible_fields %}
+                                <div class="form-group">
+                                    {% render_field  field class="form-control" placeholder=field.label %}  <!-- permet d'afficher le champs input et determine le type automatiquement en fonction du field-->
+                                    {% for error in field.errors  %}
+                                        <br>
+                                        <div class="alert alert-danger">
+                                            {{ error }}
+                                        </div>
+                                    {% endfor %}                                        
+                                </div>
+                            {% endfor %}
+                                
+                            
+                            
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="customControlAutosizing">

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .import models  # importation de fichier models.py (fichier contenant tous nos models)
 from about import models as about_model
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request): 
@@ -33,6 +34,7 @@ def video(request):
     }
     return render(request, "pages/video-post.html",datas)
 
+@login_required(login_url='login')
 def single(request, pk):
     site_info = about_model.SiteInfo.objects.filter(status=True)[:1].get() # permet de recuperer les infos
     article = models.Article.objects.get(pk=pk) # permet de recuperer l'article
@@ -58,6 +60,28 @@ def archive(request):
         'article_v':article_v,
     }
     return render(request, "pages/archive-grid.html",datas)
+
+def recherche(request):
+    result = True
+    if request.method == "POST":
+        mot_r = request.POST.get("recherche")
+        print(mot_r)
+        recherche_count = models.Article.objects.filter(titre__icontains=mot_r).count()
+        recherche = models.Article.objects.filter(titre__icontains=mot_r)
+        print(recherche)
+        if recherche_count == 0:
+            result = False
+    site_info = about_model.SiteInfo.objects.filter(status=True)[:1].get() # permet de recuperer les infos
+    article = models.Article.objects.filter(status=True)
+    article_v = models.Article.objects.exclude(video=None) # récupération des articles ayant des vidéo
+    # categorie = models.Categorie.objects.filter(status=True)
+    datas = {
+        'result':result,
+        'recherche': recherche,
+        'site_info': site_info,
+        'article_v':article_v,
+    }
+    return render(request, "pages/recherche.html",datas)
 
 
 

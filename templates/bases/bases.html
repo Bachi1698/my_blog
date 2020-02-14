@@ -63,15 +63,16 @@
                             </div>
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="{% url 'home' %}" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Search...">
+                                <form action="recherche" method="post">
+                                    {% csrf_token %}
+                                    <input type="recherche" name="recherche" id="topSearch" placeholder="Search...">
                                     <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </div>
                             <!-- Login -->
                             
                             {% if user.is_authenticated %}
-                                <i class="fa fa-user" aria-hidden="true"></i><p style="margin-top:16px;margin-left:10px;text-transform: capitalize">{{user.username}}</p>
+                            <a href="{% url 'logout' %}" class="login-btn"><i class="fa fa-sign-out" aria-hidden="true"></i></a><p style="margin-top:16px;margin-left:10px;text-transform: capitalize">{{user.username}}</p>
                             {% else %}    
                                 <a href="{% url 'login' %}" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
                             {% endif %}
@@ -244,6 +245,35 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <!-- ##### All Javascript Script ##### -->
 <!-- jQuery-2.2.4 js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+var app = new Vue({
+    el:"#app",
+    data: {
+        restaurant : []
+
+    },
+    delimiters : ["${", "}"],
+    mounted(){
+        this.get_restaurant()
+    },
+    methods:{
+         get_restaurant : function () {
+             axios.get('http://192.168.50.93:8000/Restaurant/')
+             .then(response => {
+                 this.restaurant = response.data;
+                 console.log(this.restaurant[0])
+             })
+             .catch((err)=>{
+                 console.log(err);
+             })
+         }
+    }
+})
+
+</script>
 <script src="/static/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
 <script src="/static/js/bootstrap/popper.min.js"></script>
